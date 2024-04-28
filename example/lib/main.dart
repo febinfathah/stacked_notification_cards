@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:stacked_notification_cards/stacked_notification_cards.dart';
 
+import 'fr_safe_alert_card.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -25,11 +27,22 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   List<Widget> _listWidget = [
-    Text("data"),
-    Text("data"),
-    Text("data"),
-    Text("data"),
-    Text("data"),
+    Padding(
+      padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 4),
+      child: FRSafeAlertCard.safeCard(),
+    ),
+    Padding(
+      padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 4),
+      child: FRSafeAlertCard.safeCard(),
+    ),
+    Padding(
+      padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 4),
+      child: FRSafeAlertCard.safeCard(),
+    ),
+    Padding(
+      padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 4),
+      child: FRSafeAlertCard.safeCard(),
+    )
 
   ];
   List<NotificationCard> _listOfNotification = [
