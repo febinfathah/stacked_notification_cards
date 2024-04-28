@@ -69,7 +69,9 @@ class LastNotificationCard extends StatelessWidget {
                     )
                     .value,
                 child: Visibility(
-                    visible: controller.value <= 0.2, child: notification),
+                  visible: controller.value <= 0.2,
+                  child: notification
+                ),
               ),
               Transform.translate(
                 offset: Tween<Offset>(
@@ -83,31 +85,7 @@ class LastNotificationCard extends StatelessWidget {
                       ),
                     )
                     .value,
-                child: Visibility(
-                    visible: controller.value >= 0.2, child: notification),
-              ),
-              Positioned(
-                bottom: 16,
-                child: Opacity(
-                  opacity: Tween(begin: 1.0, end: 0.0)
-                      .animate(
-                        CurvedAnimation(
-                          parent: controller,
-                          curve: Interval(0.0, 0.2),
-                        ),
-                      )
-                      .value,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 16.0,
-                      vertical: 4.0,
-                    ),
-                    child: Text(
-                      '${totalCount - 1} more notification',
-                      style: TextStyle(fontSize: 16),
-                    ),
-                  ),
-                ),
+                child: notification
               ),
             ],
           ),
