@@ -13,7 +13,7 @@ import 'offset_spacer.dart';
 /// This widget is responsible for showing the stack of cards along with the fan animation on expansion. Also handles [OnTapSlidButtonCallback].
 class StackedCards extends StatelessWidget {
   final AnimationController controller;
-  final List<NotificationCard> notificationCards;
+  final List<Widget> notificationCards;
   final double containerHeight;
   final double spacing;
   final double maxSpacing;

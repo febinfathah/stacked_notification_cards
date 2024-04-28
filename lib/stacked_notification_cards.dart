@@ -11,7 +11,7 @@ export 'src/model/notification_card.dart';
 /// This package will let you
 class StackedNotificationCards extends StatelessWidget {
   /// List of [NotificationCard]s to show.
-  final List<NotificationCard> notificationCards;
+  final List<Widget> notificationCards;
 
   /// Color of each card.
   final Color cardColor;

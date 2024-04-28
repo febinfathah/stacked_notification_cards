@@ -10,7 +10,7 @@ typedef void OnTapSlidButtonCallback(int index);
 /// This widget is shown after animating [AnimatedOffsetList].
 /// Show all cards in a column, with the option to slide each card.
 class ExpandedList extends StatelessWidget {
-  final List<NotificationCard> notificationCards;
+  final List<Widget> notificationCards;
   final AnimationController controller;
   final double initialSpacing;
   final double spacing;
@@ -103,7 +103,7 @@ class ExpandedList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final reversedList = List.of(notificationCards);
-    reversedList.sort((a, b) => b.date.compareTo(a.date));
+    // reversedList.sort((a, b) => b.date.compareTo(a.date));
     return Visibility(
       visible: _getListVisibility(reversedList.length),
       child: Column(
@@ -113,7 +113,7 @@ class ExpandedList extends StatelessWidget {
             (notification) {
               final index = reversedList.indexOf(notification);
               return BuildWithAnimation(
-                key: ValueKey(notification.date),
+                // key: ValueKey(notification.date),
                 // slidKey: ValueKey(notification.dateTime),
                 onTapView: onTapViewCallback,
                 view: view,
@@ -127,26 +127,7 @@ class ExpandedList extends StatelessWidget {
                 tileColor: tileColor,
                 endPadding: _getEndPadding(index),
                 tilePadding: tilePadding,
-                child: NotificationTile(
-                  cardTitle: notificationCardTitle,
-                  date: notification.date,
-                  title: notification.title,
-                  leading: notification.leading,
-                  subtitle: notification.subtitle,
-                  spacing: spacing,
-                  height: containerHeight,
-                  color: tileColor,
-                  cornerRadius: cornerRadius,
-                  titleTextStyle: titleTextStyle,
-                  subtitleTextStyle: subtitleTextStyle,
-                  boxShadow: boxShadow,
-                  padding: EdgeInsets.fromLTRB(
-                    tilePadding,
-                    _topPadding(index),
-                    tilePadding,
-                    _getEndPadding(index),
-                  ),
-                ),
+                child: notification
               );
             },
           ),

@@ -9,7 +9,7 @@ import '../notification_tile/notification_tile.dart';
 class AnimatedOffsetList extends StatelessWidget {
   final AnimationController controller;
   final Interval interval;
-  final List<NotificationCard> notificationCards;
+  final List<Widget> notificationCards;
   final double height;
   final double spacing;
   final Color tileColor;
@@ -157,22 +157,7 @@ class AnimatedOffsetList extends StatelessWidget {
                     opacity: _tileOpacity(index),
                     child: Visibility(
                       visible: _lastCardVisibility(index),
-                      child: NotificationTile(
-                        cardTitle: notificationCardTitle,
-                        date: notification.date,
-                        title: notification.title,
-                        subtitle: notification.subtitle,
-                        leading: notification.leading,
-                        height: height,
-                        color: tileColor,
-                        cornerRadius: cornerRadius,
-                        titleTextStyle: titleTextStyle,
-                        subtitleTextStyle: subtitleTextStyle,
-                        boxShadow: boxShadow,
-                        padding: EdgeInsets.symmetric(
-                          horizontal: padding,
-                        ),
-                      ),
+                      child: notification
                     ),
                   ),
                 ),

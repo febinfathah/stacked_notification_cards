@@ -24,6 +24,14 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  List<Widget> _listWidget = [
+    Text("data"),
+    Text("data"),
+    Text("data"),
+    Text("data"),
+    Text("data"),
+
+  ];
   List<NotificationCard> _listOfNotification = [
     NotificationCard(
       date: DateTime.now(),
@@ -100,7 +108,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 )
               ],
               notificationCardTitle: 'Message',
-              notificationCards: [..._listOfNotification],
+              notificationCards: [..._listWidget],
               cardColor: Color(0xFFF1F1F1),
               padding: 16,
               actionTitle: Text(
