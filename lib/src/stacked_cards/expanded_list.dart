@@ -223,54 +223,7 @@ class _BuildWithAnimationState extends State<BuildWithAnimation>
         child: SizeTransition(
           sizeFactor:
               Tween<double>(begin: 1.0, end: 0.0).animate(_animationController),
-          child: Slidable(
-            key: UniqueKey(),
-            endActionPane: ActionPane(
-              motion: BehindMotion(),
-              dismissible: DismissiblePane(
-                  onDismissed: () => widget.onTapClear(widget.index)),
-              children: [
-                SlideButton(
-                  padding: EdgeInsets.fromLTRB(
-                    0,
-                    widget.spacing,
-                    widget.tilePadding,
-                    widget.endPadding,
-                  ),
-                  color: widget.tileColor,
-                  boxShadow: widget.boxShadow,
-                  height: widget.containerHeight,
-                  child: widget.view,
-                  onTap: (context) async {
-                    Slidable.of(context)?.close();
-                    widget.onTapView(widget.index);
-                  },
-                  leftCornerRadius: widget.cornerRadius,
-                  rightCornerRadius: widget.cornerRadius,
-                ),
-                SlideButton(
-                  padding: EdgeInsets.fromLTRB(
-                    0,
-                    widget.spacing,
-                    widget.tilePadding,
-                    widget.endPadding,
-                  ),
-                  color: widget.tileColor,
-                  boxShadow: widget.boxShadow,
-                  height: widget.containerHeight,
-                  child: widget.clear,
-                  onTap: (context) {
-                    _animationController.forward().then(
-                          (value) => widget.onTapClear(widget.index),
-                        );
-                  },
-                  rightCornerRadius: widget.cornerRadius,
-                  leftCornerRadius: widget.cornerRadius,
-                ),
-              ],
-            ),
-            child: widget.child,
-          ),
+          child: widget.child,
         ),
       ),
     );
