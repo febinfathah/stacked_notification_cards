@@ -62,7 +62,7 @@ class StackedCards extends StatelessWidget {
     } else if (length == 2) {
       return spacing + padding;
     } else {
-      return (2 * spacing) + padding;
+      return (3 * spacing) + padding;
     }
   }
 

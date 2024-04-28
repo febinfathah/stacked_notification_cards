@@ -119,7 +119,7 @@ class _BuildStackedNotificationState extends State<BuildStackedNotification>
             notificationCards: notificationCards,
             containerHeight: _containerHeight,
             spacing: spacing,
-            maxSpacing: 2 * spacing,
+            maxSpacing: 2.2 * spacing,
             containerColor: tileColor,
             cornerRadius: cornerRadius,
             padding: padding,

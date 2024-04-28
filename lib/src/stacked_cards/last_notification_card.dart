@@ -66,7 +66,7 @@ class LastNotificationCard extends StatelessWidget {
             ),
             Transform.translate(
               offset: Tween<Offset>(
-                begin: Offset(0, 10),
+                begin: Offset(0, 8),
                 end: Offset(0, 50),
               )
                   .animate(
@@ -77,6 +77,24 @@ class LastNotificationCard extends StatelessWidget {
                   )
                   .value,
               child: notification
+            ),
+            Positioned(
+              right: 20,
+              top: 20,
+              child: Opacity(
+                opacity: Tween(begin: 1.0, end: 0.0)
+                    .animate(
+                  CurvedAnimation(
+                    parent: controller,
+                    curve: Interval(0.0, 0.2),
+                  ),
+                )
+                    .value,
+                child: Text(
+                  '${totalCount - 1} More',
+                  style: TextStyle(fontSize: 12,color: Colors.white),
+                ),
+              ),
             ),
           ],
         ),
