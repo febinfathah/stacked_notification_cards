@@ -54,7 +54,63 @@ class LastNotificationCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(cornerRadius),
             boxShadow: boxShadow,
           ),
-          child: notification,
+          child: Stack(
+            children: [
+              Transform.translate(
+                offset: Tween<Offset>(
+                  begin: Offset(0, 15),
+                  end: Offset(0, 10),
+                )
+                    .animate(
+                      CurvedAnimation(
+                        parent: controller,
+                        curve: Interval(0.0, 0.2),
+                      ),
+                    )
+                    .value,
+                child: Visibility(
+                    visible: controller.value <= 0.2, child: notification),
+              ),
+              Transform.translate(
+                offset: Tween<Offset>(
+                  begin: Offset(0, 10),
+                  end: Offset(0, 50),
+                )
+                    .animate(
+                      CurvedAnimation(
+                        parent: controller,
+                        curve: Interval(0.2, 0.4),
+                      ),
+                    )
+                    .value,
+                child: Visibility(
+                    visible: controller.value >= 0.2, child: notification),
+              ),
+              Positioned(
+                bottom: 16,
+                child: Opacity(
+                  opacity: Tween(begin: 1.0, end: 0.0)
+                      .animate(
+                        CurvedAnimation(
+                          parent: controller,
+                          curve: Interval(0.0, 0.2),
+                        ),
+                      )
+                      .value,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16.0,
+                      vertical: 4.0,
+                    ),
+                    child: Text(
+                      '${totalCount - 1} more notification',
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
