@@ -85,7 +85,7 @@ class StackedCards extends StatelessWidget {
           notificationCardTitle: notificationCardTitle,
           padding: padding,
           controller: controller,
-          interval: Interval(0.4, 0.8),
+          interval: Interval(0.2, 0.9),
           notificationCards: notificationCards,
           height: containerHeight,
           spacing: maxSpacing,
@@ -94,7 +94,7 @@ class StackedCards extends StatelessWidget {
           titleTextStyle: titleTextStyle,
           subtitleTextStyle: subtitleTextStyle,
           boxShadow: boxShadow,
-          opacityInterval: Interval(0.4, 0.6),
+          opacityInterval:  Interval(0.2, 0.9),
         ),
         LastNotificationCard(
           notificationCardTitle: notificationCardTitle,

@@ -47,32 +47,32 @@ class LastNotificationCard extends StatelessWidget {
         },
         child: Stack(
           children: [
+            // Transform.translate(
+            //   offset: Tween<Offset>(
+            //     begin: Offset(0, 15),
+            //     end: Offset(0, 10),
+            //   )
+            //       .animate(
+            //         CurvedAnimation(
+            //           parent: controller,
+            //           curve: Interval(0.2, 0.9),
+            //         ),
+            //       )
+            //       .value,
+            //   child: Visibility(
+            //     visible: controller.value <= 0.2,
+            //     child: notification
+            //   ),
+            // ),
             Transform.translate(
               offset: Tween<Offset>(
-                begin: Offset(0, 15),
-                end: Offset(0, 10),
+                begin: Offset(0, 0),
+                end: Offset(0, 55),
               )
                   .animate(
                     CurvedAnimation(
                       parent: controller,
-                      curve: Interval(0.0, 0.2),
-                    ),
-                  )
-                  .value,
-              child: Visibility(
-                visible: controller.value <= 0.2,
-                child: notification
-              ),
-            ),
-            Transform.translate(
-              offset: Tween<Offset>(
-                begin: Offset(0, 8),
-                end: Offset(0, 50),
-              )
-                  .animate(
-                    CurvedAnimation(
-                      parent: controller,
-                      curve: Interval(0.2, 0.4),
+                      curve:  Interval(0.4, 0.9),
                     ),
                   )
                   .value,
@@ -86,7 +86,7 @@ class LastNotificationCard extends StatelessWidget {
                     .animate(
                   CurvedAnimation(
                     parent: controller,
-                    curve: Interval(0.0, 0.2),
+                    curve: Interval(0.2, 0.9),
                   ),
                 )
                     .value,
