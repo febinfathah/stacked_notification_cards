@@ -28,6 +28,7 @@ class ExpandedList extends StatelessWidget {
   final OnTapSlidButtonCallback onTapViewCallback;
   final OnTapSlidButtonCallback onTapClearCallback;
   final VoidCallback? onClickCard;
+  final OnTapSlidButtonCallback onExpandedCardCallBack;
 
   const ExpandedList(
       {Key? key,
@@ -48,7 +49,8 @@ class ExpandedList extends StatelessWidget {
       required this.onTapClearCallback,
       required this.onTapViewCallback,
       required this.endPadding,
-      this.onClickCard})
+      this.onClickCard,
+      required this.onExpandedCardCallBack})
       : super(key: key);
 
   /// Determines whether to show the [ExpandedList] or not
@@ -129,8 +131,12 @@ class ExpandedList extends StatelessWidget {
                   tileColor: tileColor,
                   endPadding: _getEndPadding(index),
                   tilePadding: tilePadding,
-                  child:
-                      GestureDetector(onTap: onClickCard, child: notification));
+                  child: GestureDetector(
+                      onTap: () {
+                        // Call the onTap callback function and pass the index
+                        onExpandedCardCallBack(index);
+                      },
+                      child: notification));
             },
           ),
         ],

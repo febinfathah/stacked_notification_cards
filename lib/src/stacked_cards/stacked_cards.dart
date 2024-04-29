@@ -31,6 +31,7 @@ class StackedCards extends StatelessWidget {
   final OnTapSlidButtonCallback onTapClearCallback;
   final Widget clearAllStacked;
   final VoidCallback? onClickCards;
+  final OnTapSlidButtonCallback onExpandedCardCallBack;
 
   StackedCards({
     Key? key,
@@ -53,6 +54,7 @@ class StackedCards extends StatelessWidget {
     required this.onTapViewCallback,
     required this.clearAllStacked,
     this.onClickCards,
+    required this.onExpandedCardCallBack
   }) : super(key: key);
 
   /// This method gives the bottom padding that is used
@@ -130,6 +132,7 @@ class StackedCards extends StatelessWidget {
           onTapViewCallback: onTapViewCallback,
           onTapClearCallback: onTapClearCallback,
           onClickCard: onClickCards,
+          onExpandedCardCallBack: onExpandedCardCallBack,
         ),
       ],
     );
