@@ -20,20 +20,20 @@ class LastNotificationCard extends StatelessWidget {
   final List<BoxShadow>? boxShadow;
   final double padding;
 
-  const LastNotificationCard({
-    Key? key,
-    required this.controller,
-    required this.notification,
-    required this.totalCount,
-    required this.color,
-    required this.cornerRadius,
-    required this.height,
-    required this.notificationCardTitle,
-    required this.subtitleTextStyle,
-    required this.titleTextStyle,
-    required this.boxShadow,
-    required this.padding,
-  }) : super(key: key);
+  const LastNotificationCard(
+      {Key? key,
+      required this.controller,
+      required this.notification,
+      required this.totalCount,
+      required this.color,
+      required this.cornerRadius,
+      required this.height,
+      required this.notificationCardTitle,
+      required this.subtitleTextStyle,
+      required this.titleTextStyle,
+      required this.boxShadow,
+      required this.padding})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -47,52 +47,34 @@ class LastNotificationCard extends StatelessWidget {
         },
         child: Stack(
           children: [
-            // Transform.translate(
-            //   offset: Tween<Offset>(
-            //     begin: Offset(0, 15),
-            //     end: Offset(0, 10),
-            //   )
-            //       .animate(
-            //         CurvedAnimation(
-            //           parent: controller,
-            //           curve: Interval(0.2, 0.9),
-            //         ),
-            //       )
-            //       .value,
-            //   child: Visibility(
-            //     visible: controller.value <= 0.2,
-            //     child: notification
-            //   ),
-            // ),
             Transform.translate(
-              offset: Tween<Offset>(
-                begin: Offset(0, 0),
-                end: Offset(0, 55),
-              )
-                  .animate(
-                    CurvedAnimation(
-                      parent: controller,
-                      curve:  Interval(0.4, 0.9),
-                    ),
-                  )
-                  .value,
-              child: notification
-            ),
+                offset: Tween<Offset>(
+                  begin: Offset(0, 0),
+                  end: Offset(0, 55),
+                )
+                    .animate(
+                      CurvedAnimation(
+                        parent: controller,
+                        curve: Interval(0.4, 0.9),
+                      ),
+                    )
+                    .value,
+                child: notification),
             Positioned(
               right: 20,
               top: 20,
               child: Opacity(
                 opacity: Tween(begin: 1.0, end: 0.0)
                     .animate(
-                  CurvedAnimation(
-                    parent: controller,
-                    curve: Interval(0.2, 0.9),
-                  ),
-                )
+                      CurvedAnimation(
+                        parent: controller,
+                        curve: Interval(0.2, 0.9),
+                      ),
+                    )
                     .value,
                 child: Text(
                   '${totalCount - 1} More',
-                  style: TextStyle(fontSize: 12,color: Colors.white),
+                  style: TextStyle(fontSize: 12, color: Colors.white),
                 ),
               ),
             ),

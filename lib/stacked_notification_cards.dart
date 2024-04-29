@@ -70,6 +70,8 @@ class StackedNotificationCards extends StatelessWidget {
   /// is used to clear the card. Also tigger a shirnk animation.
   final OnTapSlidButtonCallback onTapClearCallback;
 
+  final VoidCallback? onClickExpandedCard;
+
   const StackedNotificationCards({
     Key? key,
     required this.notificationCards,
@@ -90,6 +92,7 @@ class StackedNotificationCards extends StatelessWidget {
     this.cardCornerRadius = 8,
     this.cardsSpacing = 10,
     this.padding = 0,
+    this.onClickExpandedCard,
   }) : super(key: key);
 
   @override
@@ -115,6 +118,7 @@ class StackedNotificationCards extends StatelessWidget {
         onTapClearCallback: onTapClearCallback,
         headerTitle: actionTitle,
         showLessAction: showLessAction,
+        onClickCards: onClickExpandedCard,
       );
     } else {
       return SizedBox.shrink(

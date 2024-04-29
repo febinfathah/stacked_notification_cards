@@ -43,7 +43,6 @@ class _MyHomePageState extends State<MyHomePage> {
       padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 4),
       child: FRSafeAlertCard.safeCard(),
     )
-
   ];
   List<NotificationCard> _listOfNotification = [
     NotificationCard(
@@ -156,6 +155,9 @@ class _MyHomePageState extends State<MyHomePage> {
               },
               onTapViewCallback: (index) {
                 print(index);
+              },
+              onClickExpandedCard: () {
+                print("Expanded Card Clicked");
               },
             ),
           ],

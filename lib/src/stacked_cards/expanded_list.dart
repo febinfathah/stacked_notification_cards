@@ -27,27 +27,29 @@ class ExpandedList extends StatelessWidget {
   final Widget clear;
   final OnTapSlidButtonCallback onTapViewCallback;
   final OnTapSlidButtonCallback onTapClearCallback;
+  final VoidCallback? onClickCard;
 
-  const ExpandedList({
-    Key? key,
-    required this.notificationCards,
-    required this.controller,
-    required this.containerHeight,
-    required this.initialSpacing,
-    required this.spacing,
-    required this.cornerRadius,
-    required this.tileColor,
-    required this.tilePadding,
-    required this.notificationCardTitle,
-    required this.titleTextStyle,
-    required this.subtitleTextStyle,
-    required this.boxShadow,
-    required this.clear,
-    required this.view,
-    required this.onTapClearCallback,
-    required this.onTapViewCallback,
-    required this.endPadding,
-  }) : super(key: key);
+  const ExpandedList(
+      {Key? key,
+      required this.notificationCards,
+      required this.controller,
+      required this.containerHeight,
+      required this.initialSpacing,
+      required this.spacing,
+      required this.cornerRadius,
+      required this.tileColor,
+      required this.tilePadding,
+      required this.notificationCardTitle,
+      required this.titleTextStyle,
+      required this.subtitleTextStyle,
+      required this.boxShadow,
+      required this.clear,
+      required this.view,
+      required this.onTapClearCallback,
+      required this.onTapViewCallback,
+      required this.endPadding,
+      this.onClickCard})
+      : super(key: key);
 
   /// Determines whether to show the [ExpandedList] or not
   /// When [AnimatedOffsetList] is shown this widget will not be shown.
@@ -113,22 +115,22 @@ class ExpandedList extends StatelessWidget {
             (notification) {
               final index = reversedList.indexOf(notification);
               return BuildWithAnimation(
-                // key: ValueKey(notification.date),
-                // slidKey: ValueKey(notification.dateTime),
-                onTapView: onTapViewCallback,
-                view: view,
-                clear: clear,
-                containerHeight: containerHeight,
-                cornerRadius: cornerRadius,
-                onTapClear: onTapClearCallback,
-                spacing: _getSpacing(index, spacing),
-                boxShadow: boxShadow,
-                index: index,
-                tileColor: tileColor,
-                endPadding: _getEndPadding(index),
-                tilePadding: tilePadding,
-                child: notification
-              );
+                  // key: ValueKey(notification.date),
+                  // slidKey: ValueKey(notification.dateTime),
+                  onTapView: onTapViewCallback,
+                  view: view,
+                  clear: clear,
+                  containerHeight: containerHeight,
+                  cornerRadius: cornerRadius,
+                  onTapClear: onTapClearCallback,
+                  spacing: _getSpacing(index, spacing),
+                  boxShadow: boxShadow,
+                  index: index,
+                  tileColor: tileColor,
+                  endPadding: _getEndPadding(index),
+                  tilePadding: tilePadding,
+                  child:
+                      GestureDetector(onTap: onClickCard, child: notification));
             },
           ),
         ],
