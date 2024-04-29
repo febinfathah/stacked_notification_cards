@@ -72,6 +72,8 @@ class StackedNotificationCards extends StatelessWidget {
 
   final VoidCallback? onClickExpandedCard;
 
+  final OnTapSlidButtonCallback onExpandedCardCallBack;
+
   const StackedNotificationCards({
     Key? key,
     required this.notificationCards,
@@ -93,6 +95,7 @@ class StackedNotificationCards extends StatelessWidget {
     this.cardsSpacing = 10,
     this.padding = 0,
     this.onClickExpandedCard,
+    required this.onExpandedCardCallBack,
   }) : super(key: key);
 
   @override
@@ -119,10 +122,7 @@ class StackedNotificationCards extends StatelessWidget {
         headerTitle: actionTitle,
         showLessAction: showLessAction,
         onClickCards: onClickExpandedCard,
-        onExpandedCardCallBack: (int index) {
-          print('Tapped at index $index');
-          // Do something with the index
-        },
+        onExpandedCardCallBack: onExpandedCardCallBack,
       );
     } else {
       return SizedBox.shrink(

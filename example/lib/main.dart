@@ -159,6 +159,10 @@ class _MyHomePageState extends State<MyHomePage> {
               onClickExpandedCard: () {
                 print("Expanded Card Clicked");
               },
+              onExpandedCardCallBack: (int index) {
+                print('Tapped at index $index');
+                // Do something with the index
+              },
             ),
           ],
         ),
