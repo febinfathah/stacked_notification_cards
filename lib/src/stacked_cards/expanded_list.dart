@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
 
-import '../model/notification_card.dart';
-import '../notification_tile/notification_tile.dart';
-import '../notification_tile/slide_button.dart';
 
 typedef void OnTapSlidButtonCallback(int index);
 
@@ -87,27 +83,11 @@ class ExpandedList extends StatelessWidget {
     }
   }
 
-  /// Top padding of each cards initial padding will
-  /// be same as AnimatedOffsetList inter card spacing
-  /// then it will shrink (while animating). This will
-  /// give bounce animation when cards are expanding.
-  double _topPadding(int index) {
-    return Tween<double>(
-            begin: _getSpacing(index, initialSpacing),
-            end: _getSpacing(index, spacing))
-        .animate(
-          CurvedAnimation(
-            parent: controller,
-            curve: Interval(0.8, 1.0),
-          ),
-        )
-        .value;
-  }
-
   @override
   Widget build(BuildContext context) {
-    final reversedList = List.of(notificationCards);
-    // reversedList.sort((a, b) => b.date.compareTo(a.date));
+    final reversedList = List.of(notificationCards).reversed.toList(
+          growable: false,
+        );
     return Visibility(
       visible: _getListVisibility(reversedList.length),
       child: Column(
