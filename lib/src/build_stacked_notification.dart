@@ -18,14 +18,14 @@ class BuildStackedNotification extends StatefulWidget {
   final VoidCallback onTapClearAll;
   final Widget view;
   final Widget clear;
-  final OnTapSlidButtonCallback onTapViewCallback;
-  final OnTapSlidButtonCallback onTapClearCallback;
+  final ValueChanged<int> onTapViewCallback;
+  final ValueChanged<int> onTapClearCallback;
   final Widget headerTitle;
   final Widget showLessAction;
   final Widget clearAllNotificationsAction;
   final Widget clearAllStacked;
   final VoidCallback? onClickCards;
-  final OnTapSlidButtonCallback onExpandedCardCallBack;
+  final ValueChanged<int> onExpandedCardCallBack;
 
   BuildStackedNotification({
     Key? key,

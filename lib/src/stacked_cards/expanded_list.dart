@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 
-typedef void OnTapSlidButtonCallback(int index);
+// typedef void OnTapSlidButtonCallback(int index);
 
 /// This widget is shown after animating [AnimatedOffsetList].
 /// Show all cards in a column, with the option to slide each card.
@@ -21,32 +21,31 @@ class ExpandedList extends StatelessWidget {
   final List<BoxShadow>? boxShadow;
   final Widget view;
   final Widget clear;
-  final OnTapSlidButtonCallback onTapViewCallback;
-  final OnTapSlidButtonCallback onTapClearCallback;
+  final ValueChanged<int> onTapViewCallback;
+  final ValueChanged<int> onTapClearCallback;
   final VoidCallback? onClickCard;
-  final OnTapSlidButtonCallback onExpandedCardCallBack;
+  final ValueChanged<int> onExpandedCardCallBack;
 
-  const ExpandedList(
-      {Key? key,
-      required this.notificationCards,
-      required this.controller,
-      required this.containerHeight,
-      required this.initialSpacing,
-      required this.spacing,
-      required this.cornerRadius,
-      required this.tileColor,
-      required this.tilePadding,
-      required this.notificationCardTitle,
-      required this.titleTextStyle,
-      required this.subtitleTextStyle,
-      required this.boxShadow,
-      required this.clear,
-      required this.view,
-      required this.onTapClearCallback,
-      required this.onTapViewCallback,
-      required this.endPadding,
-      this.onClickCard,
-      required this.onExpandedCardCallBack})
+  const ExpandedList({Key? key,
+    required this.notificationCards,
+    required this.controller,
+    required this.containerHeight,
+    required this.initialSpacing,
+    required this.spacing,
+    required this.cornerRadius,
+    required this.tileColor,
+    required this.tilePadding,
+    required this.notificationCardTitle,
+    required this.titleTextStyle,
+    required this.subtitleTextStyle,
+    required this.boxShadow,
+    required this.clear,
+    required this.view,
+    required this.onTapClearCallback,
+    required this.onTapViewCallback,
+    required this.endPadding,
+    this.onClickCard,
+    required this.onExpandedCardCallBack})
       : super(key: key);
 
   /// Determines whether to show the [ExpandedList] or not
@@ -85,38 +84,42 @@ class ExpandedList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final reversedList = List.of(notificationCards).reversed.toList(
-          growable: false,
-        );
+    final reversedList = List
+        .of(notificationCards)
+        .reversed
+        .toList(
+      growable: false,
+    );
     return Visibility(
       visible: _getListVisibility(reversedList.length),
       child: Column(
         key: ValueKey('ExpandedList'),
         children: [
           ...reversedList.map(
-            (notification) {
+                (notification) {
               final index = reversedList.indexOf(notification);
               return BuildWithAnimation(
-                  // key: ValueKey(notification.date),
-                  // slidKey: ValueKey(notification.dateTime),
-                  onTapView: onTapViewCallback,
-                  view: view,
-                  clear: clear,
-                  containerHeight: containerHeight,
-                  cornerRadius: cornerRadius,
-                  onTapClear: onTapClearCallback,
-                  spacing: _getSpacing(index, spacing),
-                  boxShadow: boxShadow,
-                  index: index,
-                  tileColor: tileColor,
-                  endPadding: _getEndPadding(index),
-                  tilePadding: tilePadding,
-                  child: GestureDetector(
-                      onTap: () {
-                        // Call the onTap callback function and pass the index
-                        onExpandedCardCallBack(index);
-                      },
-                      child: notification));
+                // key: ValueKey(notification.date),
+                // slidKey: ValueKey(notification.dateTime),
+                onTapView: onTapViewCallback,
+                view: view,
+                clear: clear,
+                containerHeight: containerHeight,
+                cornerRadius: cornerRadius,
+                onTapClear: onTapClearCallback,
+                spacing: _getSpacing(index, spacing),
+                boxShadow: boxShadow,
+                index: index,
+                tileColor: tileColor,
+                endPadding: _getEndPadding(index),
+                tilePadding: tilePadding,
+                child: GestureDetector(
+                  onTap: () {
+                    onExpandedCardCallBack(index);
+                  },
+                  child: notification,
+                ),
+              );
             },
           ),
         ],
@@ -132,8 +135,8 @@ class BuildWithAnimation extends StatefulWidget {
   final double cornerRadius;
   final double containerHeight;
   final Widget clear;
-  final OnTapSlidButtonCallback onTapClear;
-  final OnTapSlidButtonCallback onTapView;
+  final ValueChanged<int> onTapClear;
+  final ValueChanged<int> onTapView;
   final int index;
   final List<BoxShadow>? boxShadow;
   final Color tileColor;
@@ -183,16 +186,17 @@ class _BuildWithAnimationState extends State<BuildWithAnimation>
     return AnimatedBuilder(
       key: ValueKey('BuildWithAnimation'),
       animation: _animationController,
-      builder: (_, __) => Opacity(
-        opacity: Tween<double>(begin: 1.0, end: 0.0)
-            .animate(_animationController)
-            .value,
-        child: SizeTransition(
-          sizeFactor:
+      builder: (_, __) =>
+          Opacity(
+            opacity: Tween<double>(begin: 1.0, end: 0.0)
+                .animate(_animationController)
+                .value,
+            child: SizeTransition(
+              sizeFactor:
               Tween<double>(begin: 1.0, end: 0.0).animate(_animationController),
-          child: widget.child,
-        ),
-      ),
+              child: widget.child,
+            ),
+          ),
     );
   }
 
